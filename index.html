@@ -100,7 +100,7 @@
 <section class="hero teaser">
   <div class="container-fluid is-max-desktop">
     <div class="hero-body has-text-centered">
-      <figure>
+      <figure class="teaser-figure">
         <img src="./static/images/teaser.jpg" alt="COGS teaser">
         <figcaption>
           <strong>Figure 1:</strong> COmposition-Grounded Instruction Synthesis (COGS) Starting from a small set of reasoning-intensive seed questions, COGS decomposes them into primitive perception and reasoning factors, which are then recombined with new image sources to synthesize question–answer pairs. This process expands both the quantity and diversity of reasoning types beyond the original seeds.
@@ -109,6 +109,14 @@
     </div>
   </div>
 </section>
+
+<style>
+  .teaser-figure {
+    width: 100%;
+    max-width: 800px; /* Match the width of the text and chart */
+    margin: 0 auto; /* Center align */
+  }
+</style>
 
 
 <section class="section">
@@ -154,7 +162,7 @@
         <h3 class="title is-4">A data-efficient framework compositionally generates reasoning data to equip MLLMs with complex visual reasoning in Chart and WebGUI understanding tasks. </h3>
         <div class="content has-text-justified">
           <p>
-            COGS operates in three stages:
+            COGS operates in 3 stages:
           </p>
           <p>
             1) <strong>Seed Data Decomposition:</strong> 
@@ -188,175 +196,507 @@
   </div>
 </section>
 
+<!--/ main results -->
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Main Results -->
     <div class="columns is-centered">
       <div class="column">
         <h2 class="title is-3">Results </h2>
-        <!-- add text justification-->
         <p>
-          We evaluate COGS across multiple artificial image domains and report results separately for each setting. 
+          We evaluate COGS across multiple artificial image domains and report results separately for each setting.
         </p>
         <br />
 
-        <h3 class="title is-4"> Chart Understanding </h3>
+        <h3 class="title is-4">Chart Understanding</h3>
         <div class="content has-text-justified">
           <p>
             <p>
-              Chart Question Answering (CQA) requires interpreting visual representations in charts and reasoning over their spatial relation and underlying data. 
+              Chart Question Answering (CQA) requires interpreting visual representations in charts and reasoning over their spatial relation and underlying data.
               The recently released </em>ChartQAPro</em> benchmark consists of 1,948 human-curated question–answer pairs targeting complex reasoning over diverse chart types.
             </p>
             <p>
-              we randomly select 33% of the released test set as validation data and treat them as seed questions for data synthesis. 
+              we randomly select 33% of the released test set as validation data and treat them as seed questions for data synthesis.
               The remaining 67% is held out as a fully unseen test set for all experiments.
               we use the training set of </em>ChartQA</em> as the image source.
             </p>
         </div>
 
+        <div class="chart-container">
+          <figure id="tab-chartqa" style="margin-top: 0.5rem;">
+            <table class="table is-striped is-hoverable metrics-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Factoid</th>
+                  <th>MCQ</th>
+                  <th>Convers.</th>
+                  <th>FactChk.</th>
+                  <th>Hypoth.</th>
+                  <th>Overall</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="metrics-group-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Proprietary Models</em></span></td></tr>
+                <tr><td>GPT-5-nano</td><td>45.95</td><td>63.64</td><td>49.40</td><td>63.58</td><td>49.82</td><td>50.74</td></tr>
+                <tr><td>GPT-4o-mini</td><td>43.63</td><td>66.43</td><td>45.48</td><td>59.88</td><td>45.20</td><td>48.32</td></tr>
+                <tr><td>Gemini 2.5 Flash-Lite</td><td>40.42</td><td>19.96</td><td>48.77</td><td>37.43</td><td>16.66</td><td>38.72</td></tr>
+                <tr><td>Claude Haiku 3.5</td><td>43.44</td><td>65.03</td><td>39.84</td><td>61.79</td><td>38.77</td><td>46.74</td></tr>
+                <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Opensource Models (7B+)</em></span></td></tr>
+                <tr><td>Qwen2.5-VL-7B (base)</td><td>42.07</td><td>62.59</td><td>44.88</td><td>60.78</td><td>50.72</td><td>47.36</td></tr>
+                <tr><td>InternVL3.5-GPT-OSS</td><td>43.02</td><td>58.74</td><td>42.86</td><td>58.02</td><td>54.48</td><td>46.86</td></tr>
+                <tr><td>PHi-4-14B</td><td>23.18</td><td>34.27</td><td>40.93</td><td>46.91</td><td>36.31</td><td>31.61</td></tr>
+                <!-- <tr class="metrics-dash-row"><td colspan="7"></td></tr> -->
+                <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Chart Specialist Models</em></span></td></tr>
+                <tr><td>ChartLLaMA</td><td>8.11</td><td>23.08</td><td>18.37</td><td>45.06</td><td>29.55</td><td>17.19</td></tr>
+                <tr><td>ChartMoE</td><td>19.03</td><td>35.66</td><td>32.97</td><td>45.68</td><td>27.08</td><td>27.28</td></tr>
+                <!-- <tr class="metrics-dash-row"><td colspan="7"></td></tr> -->
+                <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Data Synthesis Approaches: over Qwen2.5-VL-7B</em></span></td></tr>
+                <tr><td>ChartQA-Train</td><td>38.77</td><td>60.14</td><td>49.72</td><td>61.11</td><td>53.12</td><td>46.64</td></tr>
+                <tr><td>Chart-R1</td><td>42.17</td><td>46.85</td><td>50.53</td><td>61.11</td><td>55.55</td><td>47.32</td></tr>
+                <tr><td>In-Context Q Example</td><td>46.33</td><td>62.94</td><td>46.91</td><td>61.11</td><td><strong>61.72</strong></td><td>50.58</td></tr>
+                <tr>
+                <td><strong>COGS (Ours)</strong></td>
+                <td><strong>46.88</strong></td>
+                <td><strong>65.73</strong></td>
+                <td><strong>51.16</strong></td>
+                <td><strong>61.85</strong></td>
+                <td>58.25</td>
+                <td><strong>52.02</strong></td>
+              </tr>
+              </tbody>
+            </table>
+            <figcaption class="metrics-caption">
+              <strong>Table 1:</strong> Accuracy (%) on ChartQAPro grouped by question type. <span class="has-text-weight-semibold">COGS</span> performs the best.
+            </figcaption>
+          </figure>
+        </div>
+        <br>
 
-<!-- ChartQAPro Results Table -->
-<style>
-  /* compact, centered table styling */
-  .metrics-table {font-size: 0.9rem; margin-top: 0.5rem; border-collapse: collapse;}
-  .metrics-table th, .metrics-table td {text-align: center; vertical-align: middle;}
-  .metrics-table th:first-child, .metrics-table td:first-child {text-align: left; white-space: nowrap;}
-
-  /* Remove all default gridlines unless a dash or midrule is specified */
-  .metrics-table, .metrics-table th, .metrics-table td {border: none !important;}
-
-  /* Only show lines when explicitly specified */
-  .metrics-group-row td {border-top: 2px solid #000 !important; font-weight: 600; font-style: italic;}
-  .metrics-dash-row td {border-top: 1px dashed #999 !important;}
-  .metrics-mid-row td {border-top: 1px solid #000 !important;} /* optional midrule */
-
-  .metrics-caption {text-align: center; font-size: 0.9rem; margin-top: 6px;}
-</style>
-
-      <figure id="tab-chartqa" style="margin-top: 0.5rem;">
-    <table class="table is-striped is-hoverable metrics-table">
-    <thead>
-      <tr>
-        <th>Model</th>
-        <th>Factoid</th>
-        <th>MCQ</th>
-        <th>Convers.</th>
-        <th>FactChk.</th>
-        <th>Hypoth.</th>
-        <th>Overall</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="metrics-group-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Proprietary Models</em></span></td></tr>
-      <tr><td>GPT-5-nano</td><td>45.95</td><td>63.64</td><td>49.40</td><td>63.58</td><td>49.82</td><td>50.74</td></tr>
-      <tr><td>GPT-4o-mini</td><td>43.63</td><td>66.43</td><td>45.48</td><td>59.88</td><td>45.20</td><td>48.32</td></tr>
-      <tr><td>Gemini 2.5 Flash-Lite</td><td>40.42</td><td>19.96</td><td>48.77</td><td>37.43</td><td>16.66</td><td>38.72</td></tr>
-      <tr><td>Claude Haiku 3.5</td><td>43.44</td><td>65.03</td><td>39.84</td><td>61.79</td><td>38.77</td><td>46.74</td></tr>
-      <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Opensource Models (7B+)</em></span></td></tr>
-      <tr><td>Qwen2.5-VL-7B (base)</td><td>42.07</td><td>62.59</td><td>44.88</td><td>60.78</td><td>50.72</td><td>47.36</td></tr>
-      <tr><td>InternVL3.5-GPT-OSS</td><td>43.02</td><td>58.74</td><td>42.86</td><td>58.02</td><td>54.48</td><td>46.86</td></tr>
-      <tr><td>PHi-4-14B</td><td>23.18</td><td>34.27</td><td>40.93</td><td>46.91</td><td>36.31</td><td>31.61</td></tr>
-      <!-- <tr class="metrics-dash-row"><td colspan="7"></td></tr> -->
-      <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Chart Specialist Models</em></span></td></tr>
-      <tr><td>ChartLLaMA</td><td>8.11</td><td>23.08</td><td>18.37</td><td>45.06</td><td>29.55</td><td>17.19</td></tr>
-      <tr><td>ChartMoE</td><td>19.03</td><td>35.66</td><td>32.97</td><td>45.68</td><td>27.08</td><td>27.28</td></tr>
-      <!-- <tr class="metrics-dash-row"><td colspan="7"></td></tr> -->
-      <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Data Synthesis Approaches: over Qwen2.5-VL-7B</em></span></td></tr>
-      <tr><td>ChartQA-Train</td><td>38.77</td><td>60.14</td><td>49.72</td><td>61.11</td><td>53.12</td><td>46.64</td></tr>
-      <tr><td>Chart-R1</td><td>42.17</td><td>46.85</td><td>50.53</td><td>61.11</td><td>55.55</td><td>47.32</td></tr>
-      <tr><td>In-Context Q Example</td><td>46.33</td><td>62.94</td><td>46.91</td><td>61.11</td><td><strong>61.72</strong></td><td>50.58</td></tr>
-      <tr>
-        <td><strong>COGS (Ours)</strong></td>
-        <td><strong>46.88</strong></td>
-        <td><strong>65.73</strong></td>
-        <td><strong>51.16</strong></td>
-        <td><strong>61.85</strong></td>
-        <td>58.25</td>
-        <td><strong>52.02</strong></td>
-      </tr>
-    </tbody>
-  </table>
-  <figcaption class="metrics-caption">Accuracy (%) on ChartQAPro grouped by question type. <span class="has-text-weight-semibold">COGS</span> performs the best.</figcaption>
-</figure>
-
-
-        <br />
-        <br />
-
-        <h3 class="title is-4"> Webpage GUI Understanding </h3>
+        <h3 class="title is-4">Webpage GUI Understanding</h3>
         <div class="content has-text-justified">
           <p>
             <p>
-              To demonstrate the generality of COGS, we also evaluate it on the webpage question answering domain, 
-              which requires visual, semantic, and structural reasoning over graphical user interfaces (GUIs). 
-              We adopt <em>VisualWebBench</em>, a benchmark consisting of diverse real-world webpages paired with reasoning-intensive, human-curated questions. 
+              To demonstrate the generality of COGS, we also evaluate it on the webpage question answering domain,
+              which requires visual, semantic, and structural reasoning over graphical user interfaces (GUIs).
+              We adopt <em>VisualWebBench</em>, a benchmark consisting of diverse real-world webpages paired with reasoning-intensive, human-curated questions.
             </p>
             <p>
               We use questions from <em>VisualWebBench</em> as seeds and screenshots from <em>MultiUI</em> as the image source.
             </p>
         </div>
 
-        <!-- VWB Results Table -->
-<style>
-  /* compact, centered table styling */
-  .metrics-table {font-size: 0.9rem; margin-top: 0.5rem; border-collapse: collapse;}
-  .metrics-table th, .metrics-table td {text-align: center; vertical-align: middle;}
-  .metrics-table th:first-child, .metrics-table td:first-child {text-align: left; white-space: nowrap;}
+        <div class="chart-container">
+          <figure id="tab-webqa" style="margin-top: 0.5rem;">
+            <table class="table is-striped is-hoverable metrics-table">
+              </thead>
+              <tr>
+                <th>Model</th>
+                <th>WebQA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="metrics-group-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Proprietary Models</em></span></td></tr>
+              <tr><td>GPT-5-nano</td><td>89.47</td></tr>
+              <tr><td>GPT-4o-mini</td><td>81.34</td></tr>
+              <tr><td>Gemini 2.5 Flash-Lite</td><td>81.85</td></tr>
+              <tr><td>Claude Haiku 3.5</td><td>80.86</td></tr>
 
-  /* Remove all default gridlines unless a dash or midrule is specified */
-  .metrics-table, .metrics-table th, .metrics-table td {border: none !important;}
+              <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Opensource Models (~7B)</em></span></td></tr>
+              <tr><td>Qwen2.5-VL-7B (base model)</td><td>85.65</td></tr>
+              <tr><td>InternVL3.5-GPT-OSS</td><td>74.64</td></tr>
+              <tr><td>Phi-4-14B</td><td>74.16</td></tr>
 
-  /* Only show lines when explicitly specified */
-  .metrics-group-row td {border-top: 2px solid #000 !important; font-weight: 600; font-style: italic;}
-  .metrics-dash-row td {border-top: 1px dashed #999 !important;}
-  .metrics-mid-row td {border-top: 1px solid #000 !important;} /* optional midrule */
+              <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Specialist Models</em></span></td></tr>
+              <tr><td>UiX-Qwen2</td><td>68.90</td></tr>
 
-  .metrics-caption {text-align: center; font-size: 0.9rem; margin-top: 6px;}
-</style>
+              <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Inference-time decomposition</em></span></td></tr>
+              <tr><td>Decompositional CoT</td><td>86.12</td></tr>
 
-      <figure id="tab-chartqa" style="margin-top: 0.5rem;">
-    <table class="table is-striped is-hoverable metrics-table">
-    </thead>
+              <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Data Synthesis Approaches</em></span></td></tr>
+              <tr><td>MultiUI-WQA</td><td>86.60</td></tr>
+              <tr>
+                <td><strong>COGS (Ours)</strong></td>
+                <td><strong>88.04</strong></td>
+              </tr>
+              </tbody>
+            </table>
+            <figcaption class="metrics-caption">
+              <strong>Table 2:</strong> Accuracy (%) on VisualWebBench (WebQA). <span class="has-text-weight-semibold">COGS</span> performs the best among non-proprietary models.
+            </figcaption>
+          </figure>
+        </div>
+        <br>
+
+        <h3 class="title is-4">Generalization over Mixture of Datasets</h3>
+        <div class="content has-text-justified">
+  <p>
+    We extend COGS to a multi-dataset setting by incorporating the MultiModal Chart Benchmark (MMC-Bench).
+  </p>
+  <p>
+    We compare two strategies for synthesizing data across domains:
+  </p>
+  <p>
+    1. <strong>Data-level mixture:</strong> decompose and recompose A and B independently, then combine the synthesized data, i.e., <i>Recompose(Decompose(A)) + Recompose(Decompose(B))</i>.
+  </p>
+  <p>
+    2. <strong>Factor-level mixture:</strong> decompose A and B separately, merge all extracted factors into a joint pool, and recompose using this combined pool, i.e., <i>Recompose(Decompose(A) ∪ Decompose(B))</i>.
+  </p>
+  <p>
+    In addition, we include two "specialist models" trained only with augmented data from a single domain (e.g., trained on augmented A and evaluated on A). These serve as "upper-bound references" for in-domain data augmentation. All methods use Qwen2.5-VL-7B as the base model and are trained with GRPO and ProcessRM-max.
+  </p>
+          <p>
+            The results show that factor-level mixture is a better strategy for data mixing.
+          </p>
+</div>
+        <div class="chart-container">
+          <figure id="tab-A+B" style="margin-top: 0.5rem;">
+            <table class="table is-striped is-hoverable metrics-table">
+              </thead>
+              <tr>
+                <th>Model</th>
+                <th>ChartQAPro</th>
+                <th>MMC</th>
+              </tr>
+            </thead>
+            <tbody>
       <tr>
-        <th>Model</th>
-        <th>WebQA</th>
+        <td style="text-align: left;">Qwen2.5VL</td>
+        <td>47.36</td>
+        <td>85.65</td>
       </tr>
-    </thead>
-    <tbody>
-      <tr class="metrics-group-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Proprietary Models</em></span></td></tr>
-      <tr><td>GPT-5-nano</td><td>89.47</td></tr>
-      <tr><td>GPT-4o-mini</td><td>81.34</td></tr>
-      <tr><td>Gemini 2.5 Flash-Lite</td><td>81.85</td></tr>
-      <tr><td>Claude Haiku 3.5</td><td>80.86</td></tr>
-
-      <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Opensource Models (~7B)</em></span></td></tr>
-      <tr><td>Qwen2.5-VL-7B (base model)</td><td>85.65</td></tr>
-      <tr><td>InternVL3.5-GPT-OSS</td><td>74.64</td></tr>
-      <tr><td>Phi-4-14B</td><td>74.16</td></tr>
-
-      <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Specialist Models</em></span></td></tr>
-      <tr><td>UiX-Qwen2</td><td>68.90</td></tr>
-
-      <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Inference-time decomposition</em></span></td></tr>
-      <tr><td>Decompositional CoT</td><td>86.12</td></tr>
-
-      <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Data Synthesis Approaches</em></span></td></tr>
-      <tr><td>MultiUI-WQA</td><td>86.60</td></tr>
       <tr>
-        <td><strong>COGS (Ours)</strong></td>
-        <td><strong>88.04</strong></td>
+        <td style="text-align: left;">+ ChartQAPro</td>
+        <td><strong>52.02</strong></td>
+        <td>85.69</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">+ MMC</td>
+        <td>49.93</td>
+        <td><strong>88.10</strong></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="border-top: 1px dashed black;"></td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">+ Data-level Mix</td>
+        <td>50.72</td>
+        <td>86.99</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">+ Factor-level Mix</td>
+        <td><strong>52.33</strong></td>
+        <td><strong>87.55</strong></td>
       </tr>
     </tbody>
-  </table>
-  <figcaption class="metrics-caption">
-    Accuracy (%) on VisualWebBench (WebQA). <span class="has-text-weight-semibold">COGS</span> performs the best among non-proprietary models.
-  </figcaption></figure>
+            </table>
+            <figcaption class="metrics-caption">
+              <strong>Table 3:</strong> Multi-data co-training results.
+            </figcaption>
+          </figure>
+        </div>
+        <br>
+
+        <h3 class="title is-4">Reward Model</h3>
+        <div class="content has-text-justified">
+          <p>
+            <p>
+              We ablate 3 reward models.
+            </p>
+            <ul style="margin-left: 1.5em;">
+              <li>
+                <strong>StandardRM:</strong>
+                <i>r(y) = r<sup>final</sup>(y),</i>
+                which only evaluates final-answer correctness. This is the default option when subquestion supervision is not available.
+              </li>
+              <li>
+                <strong>ProcessRM-sum:</strong>
+                <i>r(y) = r<sup>final</sup>(y) + λ ⋅ r<sup>sub</sup>(y),</i>
+                which combines correctness of the final answer with the average subquestion accuracy, encouraging faithful reasoning at the factor level.
+              </li>
+              <li>
+                <strong>ProcessRM-max:</strong>
+                <i>r(y) = max(r<sup>final</sup>(y), λ ⋅ r<sup>sub</sup>(y)),</i>
+                which prioritizes the final answer but still provides reward shaping when the intermediate reasoning is largely correct.
+              </li>
+            </ul>
+          <p>
+            Theoretical proof* and empirical results show that <strong>ProcessRM-max</strong> is the most effective reward model in the setting of COGS.
+          </p>
+          <p>
+            *Please find more details in our paper.
+          </p>
+        </div>
+
+        <div class="chart-container">
+          <figure id="tab-rm" style="margin-top: 0.5rem;">
+            <table class="table is-striped is-hoverable metrics-table">
+              </thead>
+              <tr>
+                <th>Reward Model</th>
+                <th>Overall Accuracy (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>StandardRM</td>
+                <td style="text-align: center;">50.96</td>
+              </tr>
+              <tr>
+                <td>ProcessRM-sum</td>
+                <td style="text-align: center;">50.35</td>
+              </tr>
+              <tr>
+                <td>ProcessRM-max</td>
+                <td style="text-align: center;"><strong>52.02</strong></td>
+              </tr>
+            </tbody>
+            </table>
+            <figcaption class="metrics-caption">
+              <strong>Table 4:</strong> Ablation study on reward models shows that <strong>ProcessRM-max</strong> maximally boosts the model performance. <span class="has-text-weight-semibold">COGS</span> performs the best among non-proprietary models.
+            </figcaption>
+          </figure>
+        </div>
+        <br>
+      </div>
+    </div>
+    <!--/ COGS -->
+  </div>
+</section>
 
 
+<style>
+  .chart-container {
+    width: 100%;
+    max-width: 800px; /* Set a consistent max width */
+    margin: 0 auto; /* Center align */
+  }
+
+  .content {
+    width: 100%;
+    max-width: 800px; /* Match the chart width */
+    margin: 0 auto; /* Center align */
+  }
+</style>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3">Example COGS data</h2>
+        <h3 class="title is-accordion-4">Chart</h3>
+        <br>
+<div id="accordion">
+  <!-- Visualization #1 -->
+  <div class="card">
+    <div class="card-header" id="heading1">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+          <strong>2xperception +  Adjustment</strong>
+        </button>
+      </h5>
+    </div>
+    <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordion">
+      <div class="card-body text-center">
+        <img width="100%" src="./static/images/synData_example_Carousel/1.jpg" alt="viz_1"/>
       </div>
     </div>
   </div>
-</section>
+
+  <!-- Visualization #2 -->
+  <div class="card">
+    <div class="card-header" id="heading2">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+          <strong>2xperception +  Comparison</strong>
+        </button>
+      </h5>
+    </div>
+    <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+      <div class="card-body text-center">
+        <img width="100%" src="static/images/synData_example_Carousel/2.jpg" alt="viz_2"/>
+      </div>
+    </div>
+  </div>
+
+    <!-- Visualization #3 -->
+  <div class="card">
+    <div class="card-header" id="heading3">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse2">
+          <strong>2xperception +  Comparison + Fact Checking</strong>
+        </button>
+      </h5>
+    </div>
+    <div id="collapse3" class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+      <div class="card-body text-center">
+        <img width="100%" src="static/images/synData_example_Carousel/3.jpg" alt="viz_2"/>
+      </div>
+    </div>
+  </div>
+
+      <!-- Visualization #4 -->
+  <div class="card">
+    <div class="card-header" id="heading4">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse2">
+          <strong>2xperception +  Swapping + Calculation + Fact Checking</strong>
+        </button>
+      </h5>
+    </div>
+    <div id="collapse4" class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+      <div class="card-body text-center">
+        <img width="100%" src="static/images/synData_example_Carousel/4.jpg" alt="viz_2"/>
+      </div>
+    </div>
+  </div>
+
+<!-- Visualization #5 -->
+<div class="card">
+  <div class="card-header" id="heading5">
+    <h5 class="mb-0">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+        <strong>2xperception +  Projection + Calculation</strong>
+      </button>
+    </h5>
+  </div>
+  <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion">
+    <div class="card-body text-center">
+      <img width="100%" src="./static/images/synData_example_Carousel/5.jpg" alt="viz_5"/>
+    </div>
+  </div>
+</div>
+
+<!-- Visualization #6 -->
+<div class="card">
+  <div class="card-header" id="heading6">
+    <h5 class="mb-0">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+        <strong>2xperception +  Adjustment + Fact Checking</strong>
+      </button>
+    </h5>
+  </div>
+  <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordion">
+    <div class="card-body text-center">
+      <img width="100%" src="./static/images/synData_example_Carousel/6.jpg" alt="viz_6"/>
+    </div>
+  </div>
+</div>
+
+<!-- Visualization #7 -->
+<div class="card">
+  <div class="card-header" id="heading7">
+    <h5 class="mb-0">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+        <strong>3xperception +  Calculation + Fact Checking</strong>
+      </button>
+    </h5>
+  </div>
+  <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordion">
+    <div class="card-body text-center">
+      <img width="100%" src="./static/images/synData_example_Carousel/7.jpg" alt="viz_7"/>
+    </div>
+  </div>
+</div>
+
+<!-- Visualization #8 -->
+<div class="card">
+  <div class="card-header" id="heading8">
+    <h5 class="mb-0">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+        <strong>3xperception +  Compare + Conclusion</strong>
+      </button>
+    </h5>
+  </div>
+  <div id="collapse8" class="collapse" aria-labelledby="heading8" data-parent="#accordion">
+    <div class="card-body text-center">
+      <img width="100%" src="./static/images/synData_example_Carousel/8.jpg" alt="viz_8"/>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+  <br>
+  <h3 class="title is-accordion-4">Webpage GUI</h3>
+        <br>
+
+<div id="accordion2">
+
+
+  <!-- Visualization #9 -->
+  <div class="card">
+    <div class="card-header" id="heading9">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse9" aria-expanded="true" aria-controls="collapse9">
+          <strong>2xperception +  calculation</strong>
+        </button>
+      </h5>
+    </div>
+    <div id="collapse9" class="collapse show" aria-labelledby="heading1" data-parent="#accordion2">
+      <div class="card-body text-center">
+        <img width="100%" src="./static/images/synData_example_Carousel/9.jpg" alt="viz_9"/>
+      </div>
+    </div>
+  </div>
+
+<!-- Visualization #10 -->
+<div class="card">
+  <div class="card-header" id="heading10">
+    <h5 class="mb-0">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+        <strong>1xperception +  Spatial Relation + Content</strong>
+      </button>
+    </h5>
+  </div>
+  <div id="collapse10" class="collapse" aria-labelledby="heading10" data-parent="#accordion2">
+    <div class="card-body text-center">
+      <img width="100%" src="./static/images/synData_example_Carousel/10.jpg" alt="viz_10"/>
+    </div>
+  </div>
+</div>
+
+
+<!-- Visualization #11 -->
+<div class="card">
+  <div class="card-header" id="heading11">
+    <h5 class="mb-0">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
+        <strong>2xperception +  Time Difference</strong>
+      </button>
+    </h5>
+  </div>
+  <div id="collapse11" class="collapse" aria-labelledby="heading11" data-parent="#accordion2">
+    <div class="card-body text-center">
+      <img width="100%" src="./static/images/synData_example_Carousel/11.jpg" alt="viz_11"/>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+    </div>
+
+
+<style>
+  #accordion, #accordion2 {
+    width: 100%;
+    max-width: 800px; /* Match the width of the text, chart, and teaser figure */
+    margin: 0 auto; /* Center align */
+  }
+  .title.is-accordion-4 {
+    font-size: 1.5rem;
+    text-align: center; /* Center the text */
+    margin: 0 auto; /* Optional: Ensures proper alignment */
+}
+</style>
+
+
+
+
+
+
+
 
 
 
