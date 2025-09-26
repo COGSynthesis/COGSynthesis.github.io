@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="COGS">
+  <meta name="keywords" content="COGS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Composition-Grounded Instruction Synthesis for Visual Reasoning</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--  &lt;!&ndash; Global site tag (gtag.js) - Google Analytics &ndash;&gt;-->
+<!--  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+  .publication-authors a .publication-authors a:hover, .publication-authors a:focus, .publication-authors a:visited {color:#333333}
+  .card-body {padding:0;border:none}
+  .card-header {padding-top:4px;padding-bottom:4px}
+  .card-header .btn-link {color:#333333;text-align:left;text-wrap:auto;}
+  .card-header .btn-link:hover, .card-header .btn-link:focus, .card-header .btn-link:visited {color:#333333;cursor:hand;text-decoration:none}
+  </style>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container-fluid is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Composition-Grounded Instruction Synthesis for Visual Reasoning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+<!--              Author Name<sup>1</sup>,-->
+<!--              <a href="https://authorweb.com/">Author Name</a><sup>1</sup>-->
+              Anonymous ICLR submission
+            </span>
+          </div>
+
+<!--          <div class="is-size-5 publication-authors">-->
+<!--            <span class="author-block"><sup>1</sup>Affiliation</span>-->
+<!--          </div>-->
+
+
+          <div class="column has-text-centered">
+            <div class="has-text-centered" style="margin-top: 2em;">
+              <a class="button is-medium" href="./static/COGS-main.zip" download>
+                <span class="icon">
+                  <i class="fas fa-file-archive"></i>
+                </span>
+                <span> COGS Code & Data (ZIP)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container-fluid is-max-desktop">
+    <div class="hero-body has-text-centered">
+      <figure>
+        <img src="./static/images/teaser.jpg" alt="COGS teaser">
+        <figcaption>
+          <strong>Figure 1:</strong> COmposition-Grounded Instruction Synthesis (COGS) Starting from a small set of reasoning-intensive seed questions, COGS decomposes them into primitive perception and reasoning factors, which are then recombined with new image sources to synthesize question–answer pairs. This process expands both the quantity and diversity of reasoning types beyond the original seeds.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Pretrained multi-modal large language models (MLLMs) demonstrate strong performance on diverse multimodal tasks, 
+            but remain limited in reasoning capabilities for domains where annotations are difficult to collect. 
+            In this work, we focus on artificial image domains such as charts, rendered documents, and webpages, 
+            which are abundant in practice yet lack large-scale human annotated reasoning datasets. 
+          </p>
+          <p>
+            We introduce <strong>COGS</strong> (COmposition-Grounded instruction Synthesis), 
+            a data-efficient framework for equipping MLLMs with advanced reasoning abilities from a small set of seed questions. 
+            The key idea is to decompose each seed question into primitive perception and reasoning <em>factors</em>, 
+            which can then be systematically recomposed with new images to generate large collections of synthetic question-answer pairs. 
+            Each generated question is paired with subquestions and intermediate answers, enabling reinforcement learning with factor-level process rewards. 
+            Experiments on chart reasoning show that COGS substantially improves performance on unseen questions, 
+            with the largest gains on reasoning-heavy and compositional questions.             
+          </p>
+          <p>
+            Moreover, training with a factor-level mixture of different seed data yields better transfer across multiple datasets, 
+            suggesting that COGS induces generalizable capabilities rather than dataset-specific overfitting. 
+            We further demonstrate that the framework extends beyond charts to other domains such as webpages.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<!--/ COGS -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3">COGS </h2>
+        <h3 class="title is-4">A data-efficient framework compositionally generates reasoning data to equip MLLMs with complex visual reasoning in Chart and WebGUI understanding tasks. </h3>
+        <div class="content has-text-justified">
+          <p>
+            COGS operates in three stages:
+          </p>
+          <p>
+            1) <strong>Seed Data Decomposition:</strong> 
+            given a small seed set of complex questions, 
+            a multimodal LLM decomposes each question into interpretable perception and reasoning factors.
+            The aggregated factor set captures the seed domain’s compositional structure.
+          </p>
+          <p>
+            2) <strong>Question Generation via Factor Recomposition:</strong>
+            given a new image and sampled factors from decomposed set, 
+            a multimodal LLM generates grounded subquestions, composes them into a complex question, 
+            and outputs both intermediate answer of subquestions and overall answers, enabling annotation-free data expansion;
+          </p>
+          <p>
+            3) <strong>Reinforcement Learning-Based Fine-tuning:</strong>
+            we adopt GRPO to fine-tune a pretrained MLLM with the generated question–answer data.
+            The structure of data generated COGS enables richer reward modeling beyond final-answer correctness.
+          </p>
+        </div>
+
+        <!--/ Method Figure -->
+        <figure style="margin-bottom: 2em;">
+            <img src="./static/images/framework.jpg" alt="COGS framework">
+            <figcaption>
+              <strong>Figure 2:</strong> The overall pipeline of COGS.
+            </figcaption>
+          </figure>
+      </div>
+    </div>
+    <!--/ COGS -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Main Results -->
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3">Results </h2>
+        <!-- add text justification-->
+        <p>
+          We evaluate COGS across multiple artificial image domains and report results separately for each setting. 
+        </p>
+        <br />
+
+        <h3 class="title is-4"> Chart Understanding </h3>
+        <div class="content has-text-justified">
+          <p>
+            <p>
+              Chart Question Answering (CQA) requires interpreting visual representations in charts and reasoning over their spatial relation and underlying data. 
+              The recently released </em>ChartQAPro</em> benchmark consists of 1,948 human-curated question–answer pairs targeting complex reasoning over diverse chart types.
+            </p>
+            <p>
+              we randomly select 33% of the released test set as validation data and treat them as seed questions for data synthesis. 
+              The remaining 67% is held out as a fully unseen test set for all experiments.
+              we use the training set of </em>ChartQA</em> as the image source.
+            </p>
+        </div>
+
+
+<!-- ChartQAPro Results Table -->
+<style>
+  /* compact, centered table styling */
+  .metrics-table {font-size: 0.9rem; margin-top: 0.5rem; border-collapse: collapse;}
+  .metrics-table th, .metrics-table td {text-align: center; vertical-align: middle;}
+  .metrics-table th:first-child, .metrics-table td:first-child {text-align: left; white-space: nowrap;}
+
+  /* Remove all default gridlines unless a dash or midrule is specified */
+  .metrics-table, .metrics-table th, .metrics-table td {border: none !important;}
+
+  /* Only show lines when explicitly specified */
+  .metrics-group-row td {border-top: 2px solid #000 !important; font-weight: 600; font-style: italic;}
+  .metrics-dash-row td {border-top: 1px dashed #999 !important;}
+  .metrics-mid-row td {border-top: 1px solid #000 !important;} /* optional midrule */
+
+  .metrics-caption {text-align: center; font-size: 0.9rem; margin-top: 6px;}
+</style>
+
+      <figure id="tab-chartqa" style="margin-top: 0.5rem;">
+    <table class="table is-striped is-hoverable metrics-table">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Factoid</th>
+        <th>MCQ</th>
+        <th>Convers.</th>
+        <th>FactChk.</th>
+        <th>Hypoth.</th>
+        <th>Overall</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="metrics-group-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Proprietary Models</em></span></td></tr>
+      <tr><td>GPT-5-nano</td><td>45.95</td><td>63.64</td><td>49.40</td><td>63.58</td><td>49.82</td><td>50.74</td></tr>
+      <tr><td>GPT-4o-mini</td><td>43.63</td><td>66.43</td><td>45.48</td><td>59.88</td><td>45.20</td><td>48.32</td></tr>
+      <tr><td>Gemini 2.5 Flash-Lite</td><td>40.42</td><td>19.96</td><td>48.77</td><td>37.43</td><td>16.66</td><td>38.72</td></tr>
+      <tr><td>Claude Haiku 3.5</td><td>43.44</td><td>65.03</td><td>39.84</td><td>61.79</td><td>38.77</td><td>46.74</td></tr>
+      <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Opensource Models (7B+)</em></span></td></tr>
+      <tr><td>Qwen2.5-VL-7B (base)</td><td>42.07</td><td>62.59</td><td>44.88</td><td>60.78</td><td>50.72</td><td>47.36</td></tr>
+      <tr><td>InternVL3.5-GPT-OSS</td><td>43.02</td><td>58.74</td><td>42.86</td><td>58.02</td><td>54.48</td><td>46.86</td></tr>
+      <tr><td>PHi-4-14B</td><td>23.18</td><td>34.27</td><td>40.93</td><td>46.91</td><td>36.31</td><td>31.61</td></tr>
+      <!-- <tr class="metrics-dash-row"><td colspan="7"></td></tr> -->
+      <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Chart Specialist Models</em></span></td></tr>
+      <tr><td>ChartLLaMA</td><td>8.11</td><td>23.08</td><td>18.37</td><td>45.06</td><td>29.55</td><td>17.19</td></tr>
+      <tr><td>ChartMoE</td><td>19.03</td><td>35.66</td><td>32.97</td><td>45.68</td><td>27.08</td><td>27.28</td></tr>
+      <!-- <tr class="metrics-dash-row"><td colspan="7"></td></tr> -->
+      <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Data Synthesis Approaches: over Qwen2.5-VL-7B</em></span></td></tr>
+      <tr><td>ChartQA-Train</td><td>38.77</td><td>60.14</td><td>49.72</td><td>61.11</td><td>53.12</td><td>46.64</td></tr>
+      <tr><td>Chart-R1</td><td>42.17</td><td>46.85</td><td>50.53</td><td>61.11</td><td>55.55</td><td>47.32</td></tr>
+      <tr><td>In-Context Q Example</td><td>46.33</td><td>62.94</td><td>46.91</td><td>61.11</td><td><strong>61.72</strong></td><td>50.58</td></tr>
+      <tr>
+        <td><strong>COGS (Ours)</strong></td>
+        <td><strong>46.88</strong></td>
+        <td><strong>65.73</strong></td>
+        <td><strong>51.16</strong></td>
+        <td><strong>61.85</strong></td>
+        <td>58.25</td>
+        <td><strong>52.02</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <figcaption class="metrics-caption">Accuracy (%) on ChartQAPro grouped by question type. <span class="has-text-weight-semibold">COGS</span> performs the best.</figcaption>
+</figure>
+
+
+        <br />
+        <br />
+
+        <h3 class="title is-4"> Webpage GUI Understanding </h3>
+        <div class="content has-text-justified">
+          <p>
+            <p>
+              To demonstrate the generality of COGS, we also evaluate it on the webpage question answering domain, 
+              which requires visual, semantic, and structural reasoning over graphical user interfaces (GUIs). 
+              We adopt <em>VisualWebBench</em>, a benchmark consisting of diverse real-world webpages paired with reasoning-intensive, human-curated questions. 
+            </p>
+            <p>
+              We use questions from <em>VisualWebBench</em> as seeds and screenshots from <em>MultiUI</em> as the image source.
+            </p>
+        </div>
+
+        <!-- VWB Results Table -->
+<style>
+  /* compact, centered table styling */
+  .metrics-table {font-size: 0.9rem; margin-top: 0.5rem; border-collapse: collapse;}
+  .metrics-table th, .metrics-table td {text-align: center; vertical-align: middle;}
+  .metrics-table th:first-child, .metrics-table td:first-child {text-align: left; white-space: nowrap;}
+
+  /* Remove all default gridlines unless a dash or midrule is specified */
+  .metrics-table, .metrics-table th, .metrics-table td {border: none !important;}
+
+  /* Only show lines when explicitly specified */
+  .metrics-group-row td {border-top: 2px solid #000 !important; font-weight: 600; font-style: italic;}
+  .metrics-dash-row td {border-top: 1px dashed #999 !important;}
+  .metrics-mid-row td {border-top: 1px solid #000 !important;} /* optional midrule */
+
+  .metrics-caption {text-align: center; font-size: 0.9rem; margin-top: 6px;}
+</style>
+
+      <figure id="tab-chartqa" style="margin-top: 0.5rem;">
+    <table class="table is-striped is-hoverable metrics-table">
+    </thead>
+      <tr>
+        <th>Model</th>
+        <th>WebQA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="metrics-group-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Proprietary Models</em></span></td></tr>
+      <tr><td>GPT-5-nano</td><td>89.47</td></tr>
+      <tr><td>GPT-4o-mini</td><td>81.34</td></tr>
+      <tr><td>Gemini 2.5 Flash-Lite</td><td>81.85</td></tr>
+      <tr><td>Claude Haiku 3.5</td><td>80.86</td></tr>
+
+      <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Opensource Models (~7B)</em></span></td></tr>
+      <tr><td>Qwen2.5-VL-7B (base model)</td><td>85.65</td></tr>
+      <tr><td>InternVL3.5-GPT-OSS</td><td>74.64</td></tr>
+      <tr><td>Phi-4-14B</td><td>74.16</td></tr>
+
+      <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Specialist Models</em></span></td></tr>
+      <tr><td>UiX-Qwen2</td><td>68.90</td></tr>
+
+      <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Inference-time decomposition</em></span></td></tr>
+      <tr><td>Decompositional CoT</td><td>86.12</td></tr>
+
+      <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Data Synthesis Approaches</em></span></td></tr>
+      <tr><td>MultiUI-WQA</td><td>86.60</td></tr>
+      <tr>
+        <td><strong>COGS (Ours)</strong></td>
+        <td><strong>88.04</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <figcaption class="metrics-caption">
+    Accuracy (%) on VisualWebBench (WebQA). <span class="has-text-weight-semibold">COGS</span> performs the best among non-proprietary models.
+  </figcaption></figure>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Template by <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
