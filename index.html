@@ -6,7 +6,7 @@
         content="COGS">
   <meta name="keywords" content="COGS">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Composition-Grounded Instruction Synthesis for Visual Reasoning</title>
+  <title>Composition-Grounded Data Synthesis for Visual Reasoning</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <!--  &lt;!&ndash; Global site tag (gtag.js) - Google Analytics &ndash;&gt;-->
@@ -42,7 +42,10 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/index.js"></script>
   <style>
-  .publication-authors a .publication-authors a:hover, .publication-authors a:focus, .publication-authors a:visited {color:#333333}
+  .publication-authors a,
+  .publication-authors a:hover,
+  .publication-authors a:focus,
+  .publication-authors a:visited {color:#3273dc}
   .card-body {padding:0;border:none}
   .card-header {padding-top:4px;padding-bottom:4px}
   .card-header .btn-link {color:#333333;text-align:left;text-wrap:auto;}
@@ -67,23 +70,66 @@
     <div class="container-fluid is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Composition-Grounded Instruction Synthesis for Visual Reasoning</h1>
+          <h1 class="title is-1 publication-title">Composition-Grounded Data Synthesis for Visual Reasoning</h1>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block"><strong>Accepted by ICLR 2026</strong></span>
+          </div>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">
-<!--              Author Name<sup>1</sup>,-->
-<!--              <a href="https://authorweb.com/">Author Name</a><sup>1</sup>-->
-              Anonymous ICLR submission
-            </span>
+            <span class="author-block"><a href="https://people.csail.mit.edu/gxy" target="_blank" rel="noopener noreferrer">Xinyi Gu</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://jiayuanm.com/" target="_blank" rel="noopener noreferrer">Jiayuan Mao</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://williamd4112.github.io/" target="_blank" rel="noopener noreferrer">Zhang-Wei Hong</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://www.zhuoranyu.com/" target="_blank" rel="noopener noreferrer">Zhuoran Yu</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://research.ibm.com/people/pengyuan-li" target="_blank" rel="noopener noreferrer">Pengyuan Li</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://research.ibm.com/people/dhiraj-joshi" target="_blank" rel="noopener noreferrer">Dhiraj Joshi</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://www.rogerioferis.org/" target="_blank" rel="noopener noreferrer">Rogerio Feris</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://zexuehe.github.io/" target="_blank" rel="noopener noreferrer">Zexue He</a><sup>1,3</sup></span>
           </div>
 
-<!--          <div class="is-size-5 publication-authors">-->
-<!--            <span class="author-block"><sup>1</sup>Affiliation</span>-->
-<!--          </div>-->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Massachusetts Institute of Technology</span>
+            <span class="author-block"><sup>2</sup>University of Wisconsin-Madison</span>
+            <span class="author-block"><sup>3</sup>MIT-IBM Watson AI Lab</span>
+          </div>
 
 
           <div class="column has-text-centered">
-            <div class="has-text-centered" style="margin-top: 2em;">
-              <a href="https://www.dropbox.com/scl/fo/db29pn3bya6n6l3pzs9yo/AMdnbJ44J5GHwSObRWvKzqQ?rlkey=fl4ty5oovx8xvo48k2dhx58q1&st=u07lpcsf&dl=0" download>COGS Code & Data</a>
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2510.15040" target="_blank" rel="noopener noreferrer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2510.15040" target="_blank" rel="noopener noreferrer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/gxy000/COGS.git" target="_blank" rel="noopener noreferrer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.dropbox.com/scl/fo/db29pn3bya6n6l3pzs9yo/ALu7ecV3LgH-gcvfyESW8vQ/data?rlkey=fl4ty5oovx8xvo48k2dhx58q1&subfolder_nav_tracking=1&st=njr870c9&dl=0" target="_blank" rel="noopener noreferrer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span>
             </div>
           </div>
         </div>
@@ -98,7 +144,7 @@
       <figure class="teaser-figure">
         <img src="./static/images/teaser.jpg" alt="COGS teaser">
         <figcaption>
-          <strong>Figure 1:</strong> COmposition-Grounded Instruction Synthesis (COGS) Starting from a small set of reasoning-intensive seed questions, COGS decomposes them into primitive perception and reasoning factors, which are then recombined with new image sources to synthesize question–answer pairs. This process expands both the quantity and diversity of reasoning types beyond the original seeds.
+          <strong>Figure 1:</strong> COmposition-Grounded Data Synthesis (COGS) Starting from a small set of reasoning-intensive seed questions, COGS decomposes them into primitive perception and reasoning factors, which are then recombined with new image sources to synthesize question–answer pairs. This process expands both the quantity and diversity of reasoning types beyond the original seeds.
         </figcaption>
       </figure>
     </div>
@@ -110,6 +156,10 @@
     width: 100%;
     max-width: 800px; /* Match the width of the text and chart */
     margin: 0 auto; /* Center align */
+  }
+
+  .teaser-figure figcaption {
+    text-align: left;
   }
 </style>
 
@@ -128,7 +178,7 @@
             which are abundant in practice yet lack large-scale human annotated reasoning datasets. 
           </p>
           <p>
-            We introduce <strong>COGS</strong> (COmposition-Grounded instruction Synthesis), 
+            We introduce <strong>COGS</strong> (COmposition-Grounded data Synthesis), 
             a data-efficient framework for equipping MLLMs with advanced reasoning abilities from a small set of seed questions. 
             The key idea is to decompose each seed question into primitive perception and reasoning <em>factors</em>, 
             which can then be systematically recomposed with new images to generate large collections of synthetic question-answer pairs. 
@@ -207,12 +257,12 @@
           <p>
             <p>
               Chart Question Answering (CQA) requires interpreting visual representations in charts and reasoning over their spatial relation and underlying data.
-              The recently released </em>ChartQAPro</em> benchmark consists of 1,948 human-curated question–answer pairs targeting complex reasoning over diverse chart types.
+              The recently released <em>ChartQAPro</em> benchmark consists of 1,948 human-curated question–answer pairs targeting complex reasoning over diverse chart types.
             </p>
             <p>
               we randomly select 33% of the released test set as validation data and treat them as seed questions for data synthesis.
               The remaining 67% is held out as a fully unseen test set for all experiments.
-              we use the training set of </em>ChartQA</em> as the image source.
+              we use the training set of <em>ChartQA</em> as the image source.
             </p>
         </div>
 
@@ -239,12 +289,14 @@
                 <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Opensource Models (7B+)</em></span></td></tr>
                 <tr><td>Qwen2.5-VL-7B (base)</td><td>42.07</td><td>62.59</td><td>44.88</td><td>60.78</td><td>50.72</td><td>47.36</td></tr>
                 <tr><td>InternVL3.5-GPT-OSS</td><td>43.02</td><td>58.74</td><td>42.86</td><td>58.02</td><td>54.48</td><td>46.86</td></tr>
-                <tr><td>PHi-4-14B</td><td>23.18</td><td>34.27</td><td>40.93</td><td>46.91</td><td>36.31</td><td>31.61</td></tr>
-                <!-- <tr class="metrics-dash-row"><td colspan="7"></td></tr> -->
+                <tr><td>Phi-4-14B</td><td>23.18</td><td>34.27</td><td>40.93</td><td>46.91</td><td>36.31</td><td>31.61</td></tr>
                 <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Chart Specialist Models</em></span></td></tr>
                 <tr><td>ChartLLaMA</td><td>8.11</td><td>23.08</td><td>18.37</td><td>45.06</td><td>29.55</td><td>17.19</td></tr>
                 <tr><td>ChartMoE</td><td>19.03</td><td>35.66</td><td>32.97</td><td>45.68</td><td>27.08</td><td>27.28</td></tr>
-                <!-- <tr class="metrics-dash-row"><td colspan="7"></td></tr> -->
+                <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Prompting Strategies: over Qwen2.5-VL-7B</em></span></td></tr>
+                <tr><td>Self-Consistency</td><td>43.44</td><td>61.54</td><td>44.00</td><td>59.82</td><td>41.76</td><td>47.22</td></tr>
+                <tr><td>Tree of Thoughts</td><td>40.01</td><td>57.94</td><td>41.55</td><td>54.13</td><td>53.35</td><td>44.44</td></tr>
+                <tr><td>Decompositional CoT</td><td>42.08</td><td>65.03</td><td>42.57</td><td>56.53</td><td>45.55</td><td>46.36</td></tr>
                 <tr class="metrics-dash-row"><td colspan="7"><span class="has-text-weight-semibold"><em>Data Synthesis Approaches: over Qwen2.5-VL-7B</em></span></td></tr>
                 <tr><td>ChartQA-Train</td><td>38.77</td><td>60.14</td><td>49.72</td><td>61.11</td><td>53.12</td><td>46.64</td></tr>
                 <tr><td>Chart-R1</td><td>42.17</td><td>46.85</td><td>50.53</td><td>61.11</td><td>55.55</td><td>47.32</td></tr>
@@ -283,18 +335,18 @@
         <div class="chart-container">
           <figure id="tab-webqa" style="margin-top: 0.5rem;">
             <table class="table is-striped is-hoverable metrics-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>WebQA</th>
+                </tr>
               </thead>
-              <tr>
-                <th>Model</th>
-                <th>WebQA</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="metrics-group-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Proprietary Models</em></span></td></tr>
-              <tr><td>GPT-5-nano</td><td>89.47</td></tr>
-              <tr><td>GPT-4o-mini</td><td>81.34</td></tr>
-              <tr><td>Gemini 2.5 Flash-Lite</td><td>81.85</td></tr>
-              <tr><td>Claude Haiku 3.5</td><td>80.86</td></tr>
+              <tbody>
+                <tr class="metrics-group-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Proprietary Models</em></span></td></tr>
+                <tr><td>GPT-5-nano</td><td>89.47</td></tr>
+                <tr><td>GPT-4o-mini</td><td>81.34</td></tr>
+                <tr><td>Gemini 2.5 Flash-Lite</td><td>81.85</td></tr>
+                <tr><td>Claude Haiku 3.5</td><td>80.86</td></tr>
 
               <tr class="metrics-dash-row"><td colspan="2"><span class="has-text-weight-semibold"><em>Opensource Models (~7B)</em></span></td></tr>
               <tr><td>Qwen2.5-VL-7B (base model)</td><td>85.65</td></tr>
@@ -346,43 +398,43 @@
         <div class="chart-container">
           <figure id="tab-A+B" style="margin-top: 0.5rem;">
             <table class="table is-striped is-hoverable metrics-table">
+              <thead>
+                <tr>
+                  <th style="border-bottom: 2px solid black; text-align: left;">Model</th>
+                  <th style="border-bottom: 2px solid black;">ChartQAPro</th>
+                  <th style="border-bottom: 2px solid black;">MMC</th>
+                </tr>
               </thead>
-              <tr>
-                <th style="border-bottom: 2px solid black; text-align: left;">Model</th>
-                <th style="border-bottom: 2px solid black;">ChartQAPro</th>
-                <th style="border-bottom: 2px solid black;">MMC</th>
-              </tr>
-            </thead>
-            <tbody>
-      <tr>
-        <td style="text-align: left;">Qwen2.5VL</td>
-        <td>47.36</td>
-        <td>85.65</td>
-      </tr>
-      <tr>
-        <td style="text-align: left;">+ ChartQAPro</td>
-        <td><strong>52.02</strong></td>
-        <td>85.69</td>
-      </tr>
-      <tr>
-        <td style="text-align: left;">+ MMC</td>
-        <td>49.93</td>
-        <td><strong>88.10</strong></td>
-      </tr>
-      <tr>
-        <td colspan="3" style="border-top: 1px dashed black;"></td>
-      </tr>
-      <tr>
-        <td style="text-align: left;">+ Data-level Mix</td>
-        <td>50.72</td>
-        <td>86.99</td>
-      </tr>
-      <tr>
-        <td style="text-align: left;">+ Factor-level Mix</td>
-        <td><strong>52.33</strong></td>
-        <td><strong>87.55</strong></td>
-      </tr>
-    </tbody>
+              <tbody>
+                <tr>
+                  <td style="text-align: left;">Qwen2.5VL</td>
+                  <td>47.36</td>
+                  <td>85.65</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">+ ChartQAPro</td>
+                  <td><strong>52.02</strong></td>
+                  <td>85.69</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">+ MMC</td>
+                  <td>49.93</td>
+                  <td><strong>88.10</strong></td>
+                </tr>
+                <tr>
+                  <td colspan="3" style="border-top: 1px dashed black;"></td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">+ Data-level Mix</td>
+                  <td>50.72</td>
+                  <td>86.99</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">+ Factor-level Mix</td>
+                  <td><strong>52.33</strong></td>
+                  <td><strong>87.55</strong></td>
+                </tr>
+              </tbody>
             </table>
             <figcaption class="metrics-caption">
               <strong>Table 3:</strong> Multi-data co-training results.
@@ -425,26 +477,26 @@
         <div class="chart-container">
           <figure id="tab-rm" style="margin-top: 0.5rem;">
             <table class="table is-striped is-hoverable metrics-table">
+              <thead>
+                <tr>
+                  <th style="border-bottom: 2px solid black;">Reward Model</th>
+                  <th style="border-bottom: 2px solid black; text-align: center;">Overall Accuracy</th>
+                </tr>
               </thead>
-              <tr>
-                <th style="border-bottom: 2px solid black;">Reward Model</th>
-                <th style="border-bottom: 2px solid black; text-align: center;">Overall Accuracy</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>StandardRM</td>
-                <td style="text-align: center;">50.96</td>
-              </tr>
-              <tr>
-                <td>ProcessRM-sum</td>
-                <td style="text-align: center;">50.35</td>
-              </tr>
-              <tr>
-                <td>ProcessRM-max</td>
-                <td style="text-align: center;"><strong>52.02</strong></td>
-              </tr>
-            </tbody>
+              <tbody>
+                <tr>
+                  <td>StandardRM</td>
+                  <td style="text-align: center;">50.96</td>
+                </tr>
+                <tr>
+                  <td>ProcessRM-sum</td>
+                  <td style="text-align: center;">50.35</td>
+                </tr>
+                <tr>
+                  <td>ProcessRM-max</td>
+                  <td style="text-align: center;"><strong>52.02</strong></td>
+                </tr>
+              </tbody>
             </table>
             <figcaption class="metrics-caption">
               <strong>Table 4:</strong> Ablation study on reward models shows that <strong>ProcessRM-max</strong> maximally boosts the model performance. <span class="has-text-weight-semibold">COGS</span> performs the best among non-proprietary models.
@@ -466,10 +518,16 @@
     margin: 0 auto; /* Center align */
   }
 
-  .content {
+  .content.has-text-justified {
     width: 100%;
     max-width: 800px; /* Match the chart width */
     margin: 0 auto; /* Center align */
+  }
+
+  #BibTeX pre,
+  #BibTeX code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
   }
 </style>
 
@@ -671,6 +729,8 @@
 </div>
       </div>
     </div>
+  </div>
+</section>
 
 
 <style>
@@ -691,7 +751,26 @@
 
 
 
-
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <div class="columns is-centered">
+    <div class="column">
+    <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{gu2025compositiongroundedinstructionsynthesisvisual,
+  title={Composition-Grounded Instruction Synthesis for Visual Reasoning},
+  author={Xinyi Gu and Jiayuan Mao and Zhang-Wei Hong and
+    Zhuoran Yu and Pengyuan Li and Dhiraj Joshi and
+    Rogerio Feris and Zexue He},
+  year={2025},
+  eprint={2510.15040},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2510.15040},
+}</code></pre>
+    </div>
+    </div>
+  </div>
+</section>
 
 
 
